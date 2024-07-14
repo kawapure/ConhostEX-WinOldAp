@@ -32,11 +32,17 @@
 #include "../inc/ServiceLocator.hpp"
 #include "../../types/inc/Viewport.hpp"
 #include "../interactivity/win32/windowUiaProvider.hpp"
+#include <uxtheme.h>
+#include <dwmapi.h>
+
+// I can't find the linker options in the project properties.
+#pragma comment(lib, "uxtheme.lib")
+#pragma comment(lib, "dwmapi.lib")
 
 // The following default masks are used in creating windows
 // Make sure that these flags match when switching to fullscreen and back
 #define CONSOLE_WINDOW_FLAGS (WS_OVERLAPPEDWINDOW | WS_HSCROLL | WS_VSCROLL)
-#define CONSOLE_WINDOW_EX_FLAGS (WS_EX_WINDOWEDGE | WS_EX_ACCEPTFILES | WS_EX_APPWINDOW | WS_EX_LAYERED)
+#define CONSOLE_WINDOW_EX_FLAGS (WS_EX_CLIENTEDGE | WS_EX_WINDOWEDGE | WS_EX_ACCEPTFILES | WS_EX_APPWINDOW | WS_EX_LAYERED)
 
 // Window class name
 #define CONSOLE_WINDOW_CLASS (L"ConsoleWindowClass")
@@ -306,6 +312,35 @@ void Window::_UpdateSystemMetrics() const
             const auto gle = GetLastError();
             LOG_WIN32_MSG(gle, "CreateWindow failed");
             status = NTSTATUS_FROM_WIN32(gle);
+        }
+
+        bool fUseClassicTheme = false;
+        wil::unique_hkey hConsoleSubKey;
+        LONG lStatus = RegOpenKeyExW(HKEY_CURRENT_USER, L"Console", 0, KEY_READ, &hConsoleSubKey);
+        if (ERROR_SUCCESS == lStatus)
+        {
+            DWORD dwValue;
+            DWORD dwType;
+            DWORD cbValue = sizeof(dwValue);
+            lStatus = RegQueryValueExW(hConsoleSubKey.get(),
+                                       L"ClassicTheme",
+                                       nullptr,
+                                       &dwType,
+                                       (PBYTE)&dwValue,
+                                       &cbValue);
+
+            if (ERROR_SUCCESS == lStatus &&
+                dwType == REG_DWORD &&
+                cbValue == sizeof(dwValue))
+            {
+                fUseClassicTheme = dwValue != 0;
+            }
+        }
+
+        if (fUseClassicTheme)
+        {
+            SetWindowTheme(hWnd, L" ", L" ");
+            SetThemeAppProperties(STAP_ALLOW_NONCLIENT);
         }
 
         if (SUCCEEDED_NTSTATUS(status))
