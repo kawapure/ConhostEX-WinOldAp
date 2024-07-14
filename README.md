@@ -2,6 +2,8 @@
 This is a modified version of the OpenConsole project from the Windows Terminal
 to allow client-edge style on Conhost V2, and classic frames.
 
+![ConhostEX](ConhostEX.png)
+
 # How to Install
 1. Download conhost.exe from the latest release
 2. Take ownership of and rename conhost.exe in System32
