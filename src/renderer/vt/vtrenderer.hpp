@@ -240,7 +240,5 @@ namespace Microsoft::Console::Render
         friend class ScreenBufferTests;
         friend class TerminalCoreUnitTests::ConptyRoundtripTests;
 #endif
-
-        void SetTestCallback(_In_ std::function<bool(const char* const, size_t const)> pfn);
     };
 }

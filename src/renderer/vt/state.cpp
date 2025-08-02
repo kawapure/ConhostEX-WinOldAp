@@ -374,25 +374,6 @@ void VtEngine::Cork(bool corked) noexcept
 }
 
 // Method Description:
-// - Sets the test callback for this instance. Instead of rendering to a pipe,
-//      this instance will instead render to a callback for testing.
-// Arguments:
-// - pfn: a callback to call instead of writing to the pipe.
-// Return Value:
-// - <none>
-void VtEngine::SetTestCallback(_In_ std::function<bool(const char* const, size_t const)> pfn)
-{
-#ifdef UNIT_TESTING
-
-    _pfnTestCallback = pfn;
-    _usingTestCallback = true;
-
-#else
-    THROW_HR(E_FAIL);
-#endif
-}
-
-// Method Description:
 // - Returns true if the entire viewport has been invalidated. That signals we
 //      should use a VT Clear Screen sequence as an optimization.
 // Arguments:
