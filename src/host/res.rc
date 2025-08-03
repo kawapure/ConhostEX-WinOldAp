@@ -12,13 +12,16 @@
 #include <windows.h>
 #include "resource.h"
 
-#ifndef EXTERNAL_BUILD
-#include "conhost.rcv"
+#include "exe/conhost.rcv"
 #include <ntverp.h>
 #include <common.ver>
-#endif
 
-IDI_APPICON             ICON    "..\\..\\..\\res\\console.ico"
+IDI_APPICON             ICON    "console.ico"
+
+IDB_TOOL16              BITMAP  "tool16.bmp"
+IDB_TOOLSHADOW16        BITMAP  "toolshadow16.bmp"
+IDB_TOOL24              BITMAP  "tool24.bmp"
+IDB_TOOLSHADOW24        BITMAP  "toolshadow24.bmp"
 
 #ifndef EXTERNAL_BUILD
 // Fusion default manifest (needed since we are created w/ RtlCreateUserProcess)

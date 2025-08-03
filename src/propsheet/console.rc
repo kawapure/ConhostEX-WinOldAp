@@ -12,14 +12,12 @@
 
 #include <windows.h>
 
-#ifndef EXTERNAL_BUILD
 #include <ntverp.h>
-#endif
 #include <commctrl.h>
 #include "dialogs.h"
 #include "console.h"
 
-IDI_CONSOLE      ICON   "..\\..\\res\\console.ico"
+IDI_CONSOLE      ICON   "..\\host\\exe\\console.ico"
 
 #include "strid.rc"
 
@@ -770,9 +768,7 @@ END
 #define VER_INTERNALNAME_STR        "Console\0"
 #define VER_ORIGINALFILENAME_STR    "CONSOLE.DLL"
 
-#ifndef EXTERNAL_BUILD
 #include "common.ver"
-#endif
 
 //
 // Bitmaps

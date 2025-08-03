@@ -1,5 +1,8 @@
 #define VER_FILETYPE                    VFT_APP
 #define VER_FILESUBTYPE                 VFT_UNKNOWN
-#define VER_FILEDESCRIPTION_STR         "Console Window Host"
-#define VER_INTERNALNAME_STR            "ConHost"
-#define VER_ORIGINALFILENAME_STR        "CONHOST.EXE"
+#define VER_COMPANYNAME_STR             "Microsoft Corporation"
+#define VER_PRODUCTNAME_STR             "Microsoft(R) Windows(R) Operating System"
+#define VER_LEGALCOPYRIGHT_STR          "Copyright (C) Microsoft Corp. 1991-1998"
+#define VER_FILEDESCRIPTION_STR         "Non-Windows application component for 386 enhanced mode"
+#define VER_INTERNALNAME_STR            "WINOLDAP"
+#define VER_ORIGINALFILENAME_STR        "WINOA386.MOD"
