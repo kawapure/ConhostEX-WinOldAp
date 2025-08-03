@@ -382,9 +382,6 @@ void Window::_UpdateSystemMetrics() const
                     // running. This works around chicken & egg cases involving window size calculations having to do with font
                     // sizes, DPI, and non-primary monitors (see MSFT #2367234).
                     siAttached.PostUpdateWindowSize();
-
-                    // Locate window theming modules and try to set the dark mode.
-                    LOG_IF_FAILED(Microsoft::Console::Internal::Theming::TrySetDarkMode(_hWnd));
                 }
             }
         }
