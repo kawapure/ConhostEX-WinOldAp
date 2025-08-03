@@ -5,7 +5,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>HostEXE</RootNamespace>
     <ProjectName>Host.EXE</ProjectName>
-    <TargetName>OpenConsole</TargetName>
+    <TargetName>conhost</TargetName>
     <ConfigurationType>Application</ConfigurationType>
     <PgoTarget>true</PgoTarget>
   </PropertyGroup>
