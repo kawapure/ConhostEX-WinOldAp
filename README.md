@@ -22,7 +22,3 @@ as a DWORD, and set it to 1.
 3. Open the OpenConsole.sln solution in Visual Studio 2022
 4. Make sure your build configuration is how you want it (most likely Release x64)
 5. Right click the "Conhost" group, and click build
-
-# Codebase Size
-I really did *not* feel like stripping the codebase of unnecessary stuff,
-so the entire Microsoft Terminal codebase is here too. Sorry if that bothers you.
